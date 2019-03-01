@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="section_label" type="id" />
+    <item name="status" type="id" />
+    <item name="detail" type="id" />
+    <item name="email_sign_out_button" type="id" />
+    <item name="verifyEmailButton" type="id" />
+    <item name="emailPasswordButtons" type="id" />
+    <item name="emailPasswordFields" type="id" />
+    <item name="signedInButtons" type="id" />
+    <item name="emailCreateAccountButton" type="id" />
+    <item name="emailSignInButton" type="id" />
+    <item name="signOutButton" type="id" />
+</resources>
