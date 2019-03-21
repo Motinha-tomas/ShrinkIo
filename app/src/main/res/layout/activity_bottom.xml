@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -41,7 +40,8 @@
             android:text="@string/home"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:buttonTint="@color/iconColor"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -54,7 +54,8 @@
             android:text="@string/notifications"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
 
         <RadioButton
             android:id="@+id/radioButton3"
@@ -67,7 +68,8 @@
             android:text="@string/settings"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
 
         <RadioButton
             android:id="@+id/radioButton4"
@@ -80,12 +82,8 @@
             android:text="@string/Messages"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
     </RadioGroup>
 
-    <fragment
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    </fragment>
 </LinearLayout>

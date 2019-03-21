@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">ShrinkIo</string>
     <string name="welcome">Welcome</string>
-    <string name="To_shrinkio">to ShrinkIo</string>
-    <string name="to_shrinkio">To Shrinkio</string>
-    <string name="title_activity_principal">Principal</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="To_shrinkio" translatable="false">to ShrinkIo</string>
+    <string name="to_shrinkio" translatable="false">To Shrinkio</string>
+    <string name="title_activity_principal" translatable="false">Principal</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
+    <string name="title_activity_login" translatable="false">Sign in</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password </string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password </string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -20,9 +20,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="shrinkio">ShrinkIo</string>
-    <string name="title_activity_bottom">ShrinkIo</string>
-    <string name="shrinkIo">ShrinkIo
+    <string name="shrinkio" translatable="false">ShrinkIo</string>
+    <string name="title_activity_bottom" translatable="false">ShrinkIo</string>
+    <string name="shrinkIo" translatable="false">ShrinkIo
     </string>
     <string name="title_activity_settings">Settings</string>
 
@@ -31,15 +31,15 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+    <string name="pref_title_social_recommendations" translatable="false">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations" translatable="false">Recommendations for people to contact
         based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_display_name" translatable="false">Display name</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_add_friends_to_messages" translatable="false">Add friends to messages</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -52,9 +52,9 @@
     </string-array>
 
     <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
+    <string name="pref_header_data_sync" translatable="false">Data &amp; sync</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
@@ -86,19 +86,19 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings" translatable="false">System sync settings</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications" translatable="false">New message notifications</string>
 
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="large_text">
+    <string name="title_activity_scrolling" translatable="false">ScrollingActivity</string>
+    <string name="large_text" translatable="false">
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -188,24 +188,24 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_home">ShrinkIo</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_item_list">Items</string>
-    <string name="title_item_detail">Item Detail</string>
-    <string name="title_activity_dash_board">DashBoard</string>
+    <string name="title_activity_home" translatable="false">ShrinkIo</string>
+    <string name="section_format" translatable="false">Hello World from section: %1$d</string>
+    <string name="title_item_list" translatable="false">Items</string>
+    <string name="title_item_detail" translatable="false">Item Detail</string>
+    <string name="title_activity_dash_board" translatable="false">DashBoard</string>
     <string name="language">Language</string>
-    <string name="title_activity_side_bar">SideBar</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_side_bar" translatable="false">SideBar</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="sound">Sound</string>
-    <string name="title_activity_nav_drawer">NavDrawer</string>
+    <string name="title_activity_nav_drawer" translatable="false">NavDrawer</string>
     <string name="prompt_name">Name</string>
-    <string name="profile" />
-    <string name="shrink">aadadaddaldafouahfhlfhauhfkshjfaojfhaw9fulhawfuhfuhnagufhawofjlawjfioewjfwjfjfef
-    jfosfijilfjoejfljsfksnflnjflkhaf.hakfnriuhtohfojahdFOhf
+    <string name="profile" translatable="false" />
+    <string name="shrink" translatable="false">aadadaddaldafouahfhlfhauhfkshjfaojfhaw9fulhawfuhfuhnagufhawofjlawjfioewjfwjfjfef
+    jfosfijilfjoejfljsfksnflnjflkhaf.hakfnriuhtohfojahdFOhfƒ
     foJNWFUKHWKRUGHJWFJNFjfsuoJFOÇsfe
     gg
     eaggegaega
@@ -216,23 +216,26 @@
     apagaggt
     wagaegagge</string>
     <string name="title_activity_messages">Messages</string>
-    <string name="listing">Listing</string>
-    <string name="deals">Deals</string>
-    <string name="rates">Rates</string>
-    <string name="watchlist">Watchlist</string>
-    <string name="matching">Matching</string>
-    <string name="home">Home</string>
-    <string name="todo">TODO</string>
-    <string name="username">Username:</string>
+    <string name="listing" translatable="false">Listing</string>
+    <string name="deals" translatable="false">Deals</string>
+    <string name="rates" translatable="false">Rates</string>
+    <string name="watchlist" translatable="false">Watchlist</string>
+    <string name="matching" translatable="false">Matching</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="username" translatable="false">Username:</string>
     <string name="country">Country:</string>
     <string name="notifications">Notifications</string>
     <string name="settings">Settings</string>
     <string name="Messages">Messages</string>
     <string name="title_activity_settings2">Settings</string>
-    <string name="signed_out" />
-    <string name="emailpassword_status_fmt" />
-    <string name="firebase_status_fmt" />
-    <string name="auth_failed" />
-    <string name="title_activity_login3">Sign in</string>
+    <string name="signed_out" translatable="false" />
+    <string name="emailpassword_status_fmt" translatable="false" />
+    <string name="firebase_status_fmt" translatable="false" />
+    <string name="auth_failed" translatable="false" />
+    <string name="title_activity_login3" translatable="false">Sign in</string>
     <string name="name">Name:</string>
+    <string name="register">Sign up</string>
+    <string name="login" translatable="false">Log In</string>
+    <string name="title_activity_login2" translatable="false">Sign in</string>
 </resources>

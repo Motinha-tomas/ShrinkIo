@@ -14,8 +14,6 @@ public class DashBoard extends AppCompatActivity {
     RadioButton Rd1, Rd2, Rd3, Rd4;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +52,10 @@ public class DashBoard extends AppCompatActivity {
             }
         });
     }
-    }
+
+
+
+
+}
 
 

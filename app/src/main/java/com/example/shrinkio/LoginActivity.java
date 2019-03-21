@@ -2,6 +2,7 @@ package com.example.shrinkio;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
@@ -18,21 +19,25 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -59,21 +64,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
     private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
+    private static final String TAG = "LoginActivity";
+    FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
+        Objects.requireNonNull( getSupportActionBar() ).hide();
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById( R.id.email );
+        mEmailView = findViewById( R.id.email );
         populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById( R.id.password );
+        mPasswordView = findViewById( R.id.password );
         mPasswordView.setOnEditorActionListener( new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -82,38 +91,174 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     return true;
                 }
                 return false;
+
             }
         } );
 
-        Button mEmailSignInButton = (Button) findViewById( R.id.email_sign_in_button );
-        mEmailSignInButton.setOnClickListener( new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-                Intent intent = new Intent(LoginActivity.this, BottomActivity.class);
-                startActivity(intent);
-            }
-        } );
 
         mLoginFormView = findViewById( R.id.login_form );
         mProgressView = findViewById( R.id.login_progress );
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Log.d( TAG, "onAuthStateChanged:signed_in:" + user.getUid() );
+                } else {
+                    Log.d( TAG, "onAuthStateChanged:signed_out:" );
+                }
+
+            }
+        };
+
+        Button button = findViewById(R.id.Login);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new
+                        Intent(LoginActivity.this,LoginActivity2.class);
+                startActivity(intent);
+            }
+        });
 
 
+
+        Button button1 = findViewById( R.id.Register );
+        button1.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                Intent intent = new Intent(LoginActivity.this, BottomActivity.class);
+                startActivity( intent );
+            }
+        }
+        );
 
     }
+
+
 
     @Override
     public void onStart() {
         super.onStart();
+        firebaseAuth.addAuthStateListener( mAuthStateListener );
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        updateUI( currentUser );
+
     }
 
 
-    private void updateUI(FirebaseUser currentUser) {
+    private void createAccount(String email, String password) {
+        Log.d( TAG, "create Account:" + email );
+
+
+        mAuth.createUserWithEmailAndPassword( email, password ).addOnCompleteListener( this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+
+                    //Log in succeeded
+                    Log.d( TAG, "createUserWithEmail:success" );
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI( user );
+                } else {
+                    Log.d( TAG, "createUserWithEmail:Fail" );
+                    Toast.makeText( LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT ).show();
+                    updateUI( null );
+                }
+                Intent intent = new Intent(LoginActivity.this, BottomActivity.class);
+                startActivity(intent);
+
+            }
+        } );
+
     }
+
+    private void Register(String email, String password) {
+        Log.d( TAG, "signIn" + email );
+
+
+        mAuth.signInWithEmailAndPassword( email, password ).addOnCompleteListener( this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d( TAG, "LogIn:successful" );
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI( user );
+                } else {
+                    Log.w( TAG, "SignInWithEmail:Failure", task.getException() );
+                    Toast.makeText( LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT ).show();
+                    updateUI( null );
+
+
+                }
+
+            }
+        } );
+
+    }
+
+
+    private void signOut() {
+        mAuth.signOut();
+        updateUI( null );
+    }
+
+
+    private void sendEmailVerification() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        Objects.requireNonNull( user ).sendEmailVerification().addOnCompleteListener( this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText( LoginActivity.this, "Verification Email Sent to" + user.getEmail(), Toast.LENGTH_SHORT ).show();
+                } else {
+                    Log.e( TAG, "Email verification", task.getException() );
+                    Toast.makeText( LoginActivity.this, "Failed to send verification email", Toast.LENGTH_SHORT ).show();
+                }
+
+            }
+        } );
+    }
+
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = mEmailView.getText().toString();
+        if (TextUtils.isEmpty( email )) {
+            mEmailView.setError( "Required" );
+            valid = false;
+        } else {
+            mEmailView.setError( null );
+        }
+
+        String password = mPasswordView.getText().toString();
+        if (TextUtils.isEmpty( password )) {
+            mPasswordView.setError( "Required" );
+            valid = false;
+        } else {
+            mPasswordView.setError( null );
+        }
+        return valid;
+    }
+
+
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            findViewById( R.id.email ).setVisibility( View.GONE );
+        } else {
+            findViewById( R.id.email ).setVisibility( View.VISIBLE );
+        }
+
+    }
+
+
+
+
 
 
     private void populateAutoComplete() {
@@ -146,18 +291,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
@@ -214,7 +359,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains( "@" );
+        return email.contains( "@" + ".com" + "gmail" + "outlook" + "hotmail");
     }
 
     private boolean isPasswordValid(String password) {
@@ -225,6 +370,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Shows the progress UI and hides the login form.
      */
+    @SuppressLint("ObsoleteSdkInt")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -298,8 +444,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>( LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection );
 
-        mEmailView.setAdapter( adapter );
     }
+
+
+
+
+    public void Login(View view) {
+        Intent intent = new Intent(LoginActivity.this, LoginActivity2.class);
+        startActivity(intent);
+    }
+
 
 
     private interface ProfileQuery {
@@ -315,6 +469,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+    @SuppressLint("StaticFieldLeak")
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -366,6 +521,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress( false );
         }
+
+
     }
+
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.Register) {
+            createAccount( mEmailView.getText().toString(), mPasswordView.getText().toString() );
+        } else if (i == R.id.Login){
+            Intent in = new Intent( LoginActivity.this, LoginActivity2.class );
+            startActivity(in);
+
+        }
+    }
+
+
+
 }
 

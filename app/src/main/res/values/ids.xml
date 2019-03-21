@@ -11,4 +11,5 @@
     <item name="emailCreateAccountButton" type="id" />
     <item name="emailSignInButton" type="id" />
     <item name="signOutButton" type="id" />
+    <item name="log_in_button" type="id" />
 </resources>

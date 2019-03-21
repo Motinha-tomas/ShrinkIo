@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1C528D</color>
+    <color name="colorPrimary">#327770</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bgcolor">#FAFAFA</color>
     <color name="licolor">#e7e8ec</color>
     <color name="titleColor">#FFFFFF</color>
-    <color name="iconColor">#0087a1</color>
-    <color name="uiconColor">#829ea3</color>
+    <color name="iconColor">#cce1df</color>
+    <color name="uiconColor">#154b45</color>
 </resources>

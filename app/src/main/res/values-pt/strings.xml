@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShrinkIo</string>
+    <string name="welcome">Bem Vindo</string>
+    <string name="action_sign_in">Entrar ou Registrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Este endereço de email é inválido</string>
+    <string name="error_invalid_password">Password demasiado curta</string>
+    <string name="error_incorrect_password">Password incorreta</string>
+    <string name="error_field_required">Campo obrigatório</string>
+    <string name="permission_rationale">Campo obrigatório</string>
+    <string name="title_activity_settings">Definições</string>
+    <string name="pref_header_general">Geral</string>
+    <string name="pref_header_notifications">Notificações</string>
+    <string name="pref_title_ringtone">Tom de toque</string>
+    <string name="pref_ringtone_silent">Silêncio</string>
+    <string name="pref_title_vibrate">Vibração</string>
+    <string name="action_settings">Definições</string>
+    <string name="language">Linguagem</string>
+    <string name="sound">Som</string>
+    <string name="prompt_name">Nome</string>
+    <string name="title_activity_messages">Mensagens</string>
+    <string name="country">País</string>
+    <string name="notifications">Notificações</string>
+    <string name="settings">Definições</string>
+    <string name="Messages">Mensagens</string>
+    <string name="title_activity_settings2">Definições</string>
+    <string name="name">Nome:</string>
+    <string name="register">Registar</string>
+</resources>
