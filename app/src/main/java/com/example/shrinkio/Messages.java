@@ -1,10 +1,13 @@
 package com.example.shrinkio;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -13,8 +16,10 @@ import java.util.Objects;
 public class Messages extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton Rd1, Rd2, Rd3, Rd4;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
 
-    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,16 @@ public class Messages extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+         recyclerView = findViewById(R.id.card_view);
+
+
+        layoutManager = new LinearLayoutManager( this );
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
 
         radioGroup = findViewById(R.id.radioGroup);
         Rd1= findViewById(R.id.radioButton);
@@ -52,6 +67,24 @@ public class Messages extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_card, menu);
+        return true;
+
+    }
+
+    public boolean onOptionsMenuSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected( item );
     }
 }
+
 

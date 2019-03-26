@@ -29,6 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="400dp"
         android:layout_gravity="center"
+        android:foregroundGravity="center"
         android:layout_marginStart="12dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="12dp"
@@ -88,22 +89,13 @@
                 android:orientation="vertical"
                 android:paddingTop="30dp">
 
-                <Button
-                    android:id="@+id/Register"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/mybutton"
-                    android:onClick="Register"
-                    android:text="@string/register"
-                    android:textColor="#fafafa"
-                    tools:layout_editor_absoluteX="7dp"
-                    tools:layout_editor_absoluteY="362dp" />
 
                 <Button
                     android:id="@+id/Login"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="324dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/mybutton"
                     android:onClick="Login"
@@ -132,5 +124,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="199dp"
+        android:layout_height="24dp"
+        android:fontFamily="serif"
+        android:text="@string/No_account"
+        app:layout_constraintBottom_toTopOf="@+id/Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_form" />
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="294dp"
+        android:layout_height="51dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/mybutton2"
+        android:onClick="Login"
+        android:text="@string/register"
+        android:textColor="#fafafa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.416" />
 
 </android.support.constraint.ConstraintLayout>

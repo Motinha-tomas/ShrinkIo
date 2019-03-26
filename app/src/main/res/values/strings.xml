@@ -7,12 +7,25 @@
     <string name="title_home" translatable="false">Home</string>
     <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications" translatable="false">Notifications</string>
-    <string name="title_activity_login" translatable="false">Sign in</string>
-    <!-- Strings related to login -->
+    <string name="title_activity_login" translatable="false">Register</string>
+    <!-- Strings related to login -->android:layout_width="287dp"
+    android:layout_height="50dp"
+    android:layout_gravity="bottom"
+    android:layout_marginStart="38dp"
+    android:layout_marginEnd="38dp"
+    android:layout_marginBottom="39dp"
+    android:background="@drawable/mybutton2"
+    android:onClick="Login"
+    android:text="@string/login"
+    android:textColor="#fafafa"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2"
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password" translatable="false">Password </string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Register</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -233,9 +246,14 @@
     <string name="emailpassword_status_fmt" translatable="false" />
     <string name="firebase_status_fmt" translatable="false" />
     <string name="auth_failed" translatable="false" />
-    <string name="title_activity_login3" translatable="false">Sign in</string>
+    <string name="title_activity_login3" translatable="false">Register</string>
     <string name="name">Name:</string>
-    <string name="register">Sign up</string>
+    <string name="register">Register</string>
     <string name="login" translatable="false">Log In</string>
-    <string name="title_activity_login2" translatable="false">Sign in</string>
+    <string name="title_activity_login2" translatable="false">Register</string>
+    <string name="tomas">Tomas</string>
+    <string name="_17" translatable="false">17</string>
+    <string name="fun_playfull_etc" translatable="false">Fun, Playfull, etc...</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="No_account">Don\'t have an account yet?</string>
 </resources>

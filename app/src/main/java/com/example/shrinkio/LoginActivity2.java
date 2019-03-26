@@ -21,9 +21,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,7 +70,7 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
     private View mLoginFormView;
     private FirebaseAuth mAuth;
     private FirebaseAuth firebaseAuth;
-    private static final String TAG = "LoginActivity";
+    private static final String TAG = "LoginActivity2";
     FirebaseAuth.AuthStateListener mAuthStateListener;
     private EditText email;
     private EditText password;
@@ -98,6 +100,7 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
                 return false;
             }
         } );
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         email = findViewById( R.id.email );
         password = findViewById(R.id.password);
@@ -126,6 +129,25 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
         };
 
 
+        Button button = findViewById(R.id.Register);
+        button.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity2.this, LoginActivity.class);
+                startActivity( intent );
+            }
+        } );
+
+
+        Button button1 = findViewById( R.id.Login);
+        button1.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(LoginActivity2.this, BottomActivity.class);
+                startActivity( intent1 );
+            }
+        } );
+
     }
 
     @Override
@@ -134,8 +156,6 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
         firebaseAuth.addAuthStateListener( mAuthStateListener );
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-        Intent intent = new Intent(LoginActivity2.this, BottomActivity.class);
-        startActivity( intent );
 
     }
 
@@ -259,7 +279,7 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains( "@" );
+        return email.contains( "@" + ".com" + "gmail" + "hotmail" + "outlook");
     }
 
     private boolean isPasswordValid(String password) {
@@ -385,9 +405,6 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
             return;
         }
 
-        Intent intent = new Intent(LoginActivity2.this, BottomActivity.class);
-        startActivity( intent );
-        attemptLogin();
 
 
         if (password.length() == 0) {

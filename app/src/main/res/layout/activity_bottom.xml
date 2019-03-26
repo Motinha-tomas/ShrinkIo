@@ -15,8 +15,6 @@
     android:gravity="center"
     android:layout_gravity="center">
 
-
-
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
@@ -33,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:buttonTint="@color/iconColor"
             android:checked="true"
             android:drawableTop="@drawable/ic_home_black_24dp"
             android:padding="10dp"
@@ -40,8 +39,7 @@
             android:text="@string/home"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp"
-            android:buttonTint="@color/iconColor"/>
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -49,13 +47,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:buttonTint="@color/uiconColor"
             android:drawableTop="@drawable/ic_notifications_black_24dp"
             android:padding="10dp"
             android:text="@string/notifications"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp"
-            android:buttonTint="@color/uiconColor"/>
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton3"
@@ -63,13 +61,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:buttonTint="@color/uiconColor"
             android:drawableTop="@drawable/ic_settings_icon"
             android:padding="10dp"
             android:text="@string/settings"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp"
-            android:buttonTint="@color/uiconColor"/>
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton4"
@@ -77,13 +75,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:buttonTint="@color/uiconColor"
             android:drawableTop="@drawable/ic_msg_icon"
             android:padding="10dp"
             android:text="@string/Messages"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp"
-            android:buttonTint="@color/uiconColor"/>
+            android:textSize="12sp" />
+
     </RadioGroup>
+
 
 </LinearLayout>

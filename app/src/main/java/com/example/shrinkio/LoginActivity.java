@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             }
         } );
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 
         mLoginFormView = findViewById( R.id.login_form );
@@ -119,8 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new
-                        Intent(LoginActivity.this,LoginActivity2.class);
+                Intent intent = new Intent(LoginActivity.this, LoginActivity2.class);
                 startActivity(intent);
             }
         });
@@ -131,8 +132,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         button1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick (View view) {
-                Intent intent = new Intent(LoginActivity.this, BottomActivity.class);
-                startActivity( intent );
+                Intent intent1 = new Intent(LoginActivity.this, BottomActivity.class);
+                startActivity(intent1);
             }
         }
         );
@@ -449,10 +450,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
-    public void Login(View view) {
-        Intent intent = new Intent(LoginActivity.this, LoginActivity2.class);
-        startActivity(intent);
-    }
 
 
 

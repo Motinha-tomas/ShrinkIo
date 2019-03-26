@@ -27,4 +27,7 @@
     <string name="title_activity_settings2">Definições</string>
     <string name="name">Nome:</string>
     <string name="register">Registar</string>
+    <string name="tomas">Tomás</string>
+    <string name="already_have_an_account">Já tem conta?</string>
+    <string name="No_account">Ainda não tem conta?</string>
 </resources>

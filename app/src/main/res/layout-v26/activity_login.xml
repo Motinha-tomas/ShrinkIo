@@ -27,15 +27,17 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="364dp"
-        android:layout_height="382dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="101dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -45,20 +47,23 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="email"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:targetApi="o" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -66,14 +71,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_name"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:targetApi="o" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -106,25 +113,13 @@
                 <Button
                     android:id="@+id/Register"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/mybutton"
                     android:text="@string/register"
                     android:textColor="#fafafa"
+                    tools:ignore="Register"
                     tools:layout_editor_absoluteX="7dp"
                     tools:layout_editor_absoluteY="362dp" />
-
-                <Button
-                    android:id="@+id/Login"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/mybutton"
-                    android:onClick="Login"
-                    android:text="@string/login"
-                    android:textColor="#fafafa"
-                    tools:layout_editor_absoluteX="4dp"
-                    tools:layout_editor_absoluteY="430dp" />
 
             </LinearLayout>
 
@@ -133,10 +128,38 @@
     </ScrollView>
 
 
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="287dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/mybutton2"
+        android:text="@string/login"
+        android:textColor="#fafafa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="199dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="serif"
+        android:text="@string/already_have_an_account"
+        app:layout_constraintBottom_toTopOf="@+id/Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_form" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
@@ -149,7 +172,8 @@
         app:layout_constraintBottom_toTopOf="@id/login_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091" />
 
 
 </android.support.constraint.ConstraintLayout>
