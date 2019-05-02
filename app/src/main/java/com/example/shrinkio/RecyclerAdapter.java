@@ -39,7 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         ViewHolder(View itemView) {
             super( itemView );
             profileNames = itemView.findViewById( R.id.profileName );
-            bio = itemView.findViewById( R.id.bio );
+            bio = itemView.findViewById( R.id.Bio );
 
             itemView.setOnClickListener( new View.OnClickListener() {
                 @Override

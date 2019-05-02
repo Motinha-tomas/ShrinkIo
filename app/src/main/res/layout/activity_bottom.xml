@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BottomActivity"
-    android:orientation="horizontal"
-    android:foregroundGravity="center"
     android:layout_alignParentBottom="true"
-    android:paddingTop="5dp"
+    android:layout_gravity="center"
     android:elevation="10dp"
-    tools:targetApi="lollipop"
+    android:foregroundGravity="center"
     android:gravity="center"
-    android:layout_gravity="center">
+    android:orientation="vertical"
+    tools:context=".BottomActivity"
+    tools:targetApi="lollipop">
+
+
+
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
+        android:gravity="bottom"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="UselessParent">
 
 
@@ -86,4 +92,4 @@
     </RadioGroup>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,103 +1,90 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/radioGroup"
-    tools:context=".Messages">
-
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:context=".Messages">
-
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/colorPrimary"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Messages"
+    android:orientation="horizontal"
+    android:foregroundGravity="center"
+    android:layout_alignParentBottom="true"
+    android:paddingTop="5dp"
+    android:elevation="10dp"
+    tools:targetApi="lollipop"
+    android:gravity="center"
+    android:layout_gravity="center">
 
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:buttonTint="@color/iconColor"
-                android:checked="true"
-                android:drawableTop="@drawable/ic_home_black_24dp"
-                android:padding="10dp"
-                android:tag="1"
-                android:text="@string/home"
-                android:textAlignment="center"
-                android:textColor="@color/color"
-                android:textSize="12sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:buttonTint="@color/uiconColor"
-                android:drawableTop="@drawable/ic_notifications_black_24dp"
-                android:padding="10dp"
-                android:text="@string/notifications"
-                android:textAlignment="center"
-                android:textColor="@color/color"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:buttonTint="@color/uiconColor"
-                android:drawableTop="@drawable/ic_settings_icon"
-                android:padding="10dp"
-                android:text="@string/settings"
-                android:textAlignment="center"
-                android:textColor="@color/color"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:buttonTint="@color/uiconColor"
-                android:checked="true"
-                android:drawableTop="@drawable/ic_msg_icon"
-                android:padding="10dp"
-                android:text="@string/Messages"
-                android:textAlignment="center"
-                android:textColor="@color/color"
-                android:textSize="12sp" />
-
-        </RadioGroup>
-    </android.support.design.widget.CoordinatorLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </android.support.design.widget.AppBarLayout>
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
 
-</RelativeLayout>
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_home_black_24dp"
+            android:padding="10dp"
+            android:tag="1"
+            android:text="@string/home"
+            android:textAlignment="center"
+            android:textColor="@color/color"
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_notifications_black_24dp"
+            android:padding="10dp"
+            android:text="@string/notifications"
+            android:textAlignment="center"
+            android:textColor="@color/color"
+            android:textSize="12sp"
+            android:buttonTint="@color/iconColor"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_settings_icon"
+            android:padding="10dp"
+            android:text="@string/settings"
+            android:textAlignment="center"
+            android:textColor="@color/color"
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_msg_icon"
+            android:padding="10dp"
+            android:checked="true"
+            android:text="@string/Messages"
+            android:textAlignment="center"
+            android:textColor="@color/color"
+            android:textSize="12sp"
+            android:buttonTint="@color/uiconColor"/>
+    </RadioGroup>
+
+</LinearLayout>
 
