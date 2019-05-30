@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,14 +9,17 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/AppName"
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/home"
         android:layout_gravity="center"
-        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="@string/Messages"
-        android:textColor="#FFFFFF"
         android:textSize="23sp"
-        />
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#FFFFFF"
+        tools:ignore="MissingConstraints" />
+
+
+
 
 </LinearLayout>

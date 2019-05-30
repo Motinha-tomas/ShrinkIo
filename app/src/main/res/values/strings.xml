@@ -256,9 +256,20 @@
     <string name="fun_playfull_etc" translatable="false">Fun, Playfull, etc...</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="No_account">Don\'t have an account yet?</string>
-    <string name="Bio" />
-    <string name="bio">Bio:</string>
-    <string name="title_person_list">People</string>
-    <string name="title_person_detail">Person Detail</string>
-    <string name="log_out">Log Out</string>
+    <string name="Bio" translatable="false" />
+    <string name="bio" translatable="false">Bio:</string>
+    <string name="title_person_list" translatable="false">People</string>
+    <string name="title_person_detail" translatable="false">Person Detail</string>
+    <string name="log_out" translatable="false">Log Out</string>
+    <string name="title_activity_navigation" translatable="false">NavigationActivity</string>
+
+    <string name="menu_home" translatable="false">Home</string>
+    <string name="menu_gallery" translatable="false">Gallery</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_tools" translatable="false">Tools</string>
+    <string name="menu_share" translatable="false">Share</string>
+    <string name="menu_send" translatable="false">Send</string>
+    <string name="Profile">Profile</string>
+    <string name="title_activity_profile" translatable="false" />
+    <string name="communicate" translatable="false">communicate</string>
 </resources>

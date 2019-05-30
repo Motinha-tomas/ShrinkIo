@@ -16,6 +16,6 @@
         android:text="@string/Messages"
         android:textColor="#FFFFFF"
         android:textSize="23sp"
-        />
+         />
 
 </LinearLayout>

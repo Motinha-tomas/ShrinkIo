@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity  {
     Button Login;
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
     @Override
@@ -42,6 +44,15 @@ public class LoginActivity extends AppCompatActivity  {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+
+        if (firebaseUser != null) {
+            startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+            finish();
+        }
 
         Register.setOnClickListener( new View.OnClickListener() {
 

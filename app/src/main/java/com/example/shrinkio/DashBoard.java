@@ -20,7 +20,8 @@ public class DashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_dash_board);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
+        getSupportActionBar().setCustomView(R.layout.abs_layout_notifications);
+        setTitle(" Notifications" );
 
         radioGroup = findViewById(R.id.radioGroup);
         Rd1= findViewById(R.id.radioButton);

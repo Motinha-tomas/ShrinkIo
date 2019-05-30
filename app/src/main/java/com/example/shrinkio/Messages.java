@@ -19,9 +19,9 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
-        Objects.requireNonNull( this.getSupportActionBar() ).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
+        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
+        getSupportActionBar().setCustomView( R.layout.abs_layout_messages );
+        setTitle( "Messages" );
 
 
         radioGroup = findViewById( R.id.radioGroup );
