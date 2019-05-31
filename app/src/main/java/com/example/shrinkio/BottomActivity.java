@@ -3,7 +3,6 @@ package com.example.shrinkio;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.gesture.Gesture;
-import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +20,7 @@ import java.util.Objects;
 public class BottomActivity extends AppCompatActivity
         implements GestureOverlayView.OnGesturePerformedListener {
 
-    private GestureLibrary gestureLib;
+
 
 
 
@@ -39,12 +38,14 @@ public class BottomActivity extends AppCompatActivity
 
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_bottom );
-        GestureOverlayView gestureOverlayView = new GestureOverlayView(this);
+        new GestureOverlayView( this );
 
 
 
         Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
         getSupportActionBar().setCustomView( R.layout.abs_layout_home );
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
         radioGroup = findViewById( R.id.radioGroup );
@@ -79,12 +80,6 @@ public class BottomActivity extends AppCompatActivity
 
 
 
-
-
-
-
-
-
     }
 
 
@@ -92,7 +87,7 @@ public class BottomActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen( GravityCompat.START )) {
-            drawer.closeDrawer( GravityCompat.END );
+            drawer.closeDrawer( GravityCompat.START );
         } else {
             super.onBackPressed();
         }
@@ -109,8 +104,6 @@ public class BottomActivity extends AppCompatActivity
 
                     @Override
                     public void onDrawerOpened(@NonNull View view) {
-
-
 
                     }
 
