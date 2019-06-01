@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="@string/Messages"
+        android:text="@string/People"
         android:textColor="#FFFFFF"
         android:textSize="23sp"
-         />
+        />
 
 </LinearLayout>

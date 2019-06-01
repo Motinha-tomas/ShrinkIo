@@ -61,6 +61,7 @@ public class LoginActivity2 extends AppCompatActivity {
                              email.getText();
                              password.getText();
                              startActivity(new Intent(LoginActivity2.this, BottomActivity.class));
+                             overridePendingTransition(0, 0);
                          } else {
                              Toast.makeText( LoginActivity2.this, Objects.requireNonNull( task.getException() ).getMessage(), Toast.LENGTH_SHORT ).show();
                          }
@@ -75,6 +76,7 @@ public class LoginActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity2.this, LoginActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
 

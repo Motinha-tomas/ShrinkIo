@@ -43,18 +43,22 @@ public class SettingsActivity extends AppCompatActivity {
                 if (Rd1.isChecked()) {
                     Intent intent = new Intent( getApplicationContext(), BottomActivity.class );
                     startActivity( intent );
+                    overridePendingTransition(0, 0);
                 }
                 if (Rd2.isChecked()) {
                     Intent intent1 = new Intent( getApplicationContext(), DashBoard.class );
                     startActivity( intent1 );
+                    overridePendingTransition(0, 0);
                 }
                 if (Rd3.isChecked()) {
                     Intent intent2 = new Intent( getApplicationContext(), SettingsActivity.class );
                     startActivity( intent2 );
+                    overridePendingTransition(0, 0);
                 } else {
                     if (Rd4.isChecked()) {
                         Intent intent3 = new Intent( getApplicationContext(), Messages.class );
                         startActivity( intent3 );
+                        overridePendingTransition(0, 0);
                     }
 
 

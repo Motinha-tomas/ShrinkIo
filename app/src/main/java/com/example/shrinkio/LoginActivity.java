@@ -3,8 +3,10 @@ package com.example.shrinkio;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,7 +37,11 @@ public class LoginActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
-        Objects.requireNonNull( getSupportActionBar() ).hide();
+
+        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
 
         email = findViewById( R.id.email );
         password = findViewById( R.id.password );
@@ -51,6 +57,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         if (firebaseUser != null) {
             startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+            overridePendingTransition(0, 0);
             finish();
         }
 
@@ -67,6 +74,7 @@ public class LoginActivity extends AppCompatActivity  {
                             email.setText( "" );
                             password.setText( "");
                             startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+                            overridePendingTransition(0, 0);
                         }
                     }
                 } );
@@ -82,6 +90,7 @@ public class LoginActivity extends AppCompatActivity  {
             public void onClick(View v) {
 
                 startActivity( new Intent(LoginActivity.this, LoginActivity2.class) );
+                overridePendingTransition(0, 0);
             }
         });
     }

@@ -2,14 +2,14 @@ package com.example.shrinkio;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.gesture.Gesture;
 import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.GravityCompat;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,17 +18,10 @@ import java.util.Objects;
 
 
 public class BottomActivity extends AppCompatActivity
-        implements GestureOverlayView.OnGesturePerformedListener {
-
-
-
-
-
-
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     RadioGroup radioGroup;
     RadioButton Rd1, Rd2, Rd3, Rd4;
-    DrawerLayout drawer;
 
 
 
@@ -36,16 +29,16 @@ public class BottomActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_bottom );
         new GestureOverlayView( this );
 
 
-
-        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
+        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView( R.layout.abs_layout_home );
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
 
         radioGroup = findViewById( R.id.radioGroup );
@@ -59,39 +52,31 @@ public class BottomActivity extends AppCompatActivity
                 if (Rd1.isChecked()) {
                     Intent intent = new Intent( getApplicationContext(), BottomActivity.class );
                     startActivity( intent );
+                    overridePendingTransition(0, 0);
                 }
                 if (Rd2.isChecked()) {
                     Intent intent1 = new Intent( getApplicationContext(), DashBoard.class );
                     startActivity( intent1 );
+                    overridePendingTransition(0, 0);
                 }
                 if (Rd3.isChecked()) {
-                    Intent intent2 = new Intent( getApplicationContext(), SettingsActivity.class );
+                    Intent intent2 = new Intent( getApplicationContext(), PeopleActivity.class );
                     startActivity( intent2 );
+                    overridePendingTransition(0, 0);
                 } else {
                     if (Rd4.isChecked()) {
                         Intent intent3 = new Intent( getApplicationContext(), Messages.class );
                         startActivity( intent3 );
+                        overridePendingTransition(0, 0);
                     }
                 }
             }
         } );
 
 
-
-
-
+        NavigationView nav_view = findViewById(R.id.nav_view);
     }
 
-
-
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen( GravityCompat.START )) {
-            drawer.closeDrawer( GravityCompat.START );
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     public void onDrawerSlide() {
         DrawerLayout drawerLayout = findViewById( R.id.DrawerLayout);
@@ -110,6 +95,7 @@ public class BottomActivity extends AppCompatActivity
                     @Override
                     public void onDrawerClosed(@NonNull View view) {
 
+
                     }
 
                     @Override
@@ -121,19 +107,26 @@ public class BottomActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
+        @Override
+        public boolean onNavigationItemSelected (@NonNull MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                startActivity( new Intent( BottomActivity.this, ProfileActivity.class ) );
+                overridePendingTransition( 0, 0 );
+                return true;
+            case R.id.nav_settings:
+                startActivity( new Intent( BottomActivity.this, SettingsActivity.class ) );
+                overridePendingTransition( 0, 0 );
+                return true;
+            default:
+                return super.onOptionsItemSelected( item );
+        }
 
+    }
     }
 
 
 
-
-
-
-
-
-}
 
 
 

@@ -19,38 +19,59 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DrawerLayout"/>
+
+
+        <activity android:name=".BottomActivity" />
+
+
+        <activity android:name=".PeopleActivity" />
+
+
+        <activity android:name=".DrawerLayout" />
+
+
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="@string/title_activity_login" />
+
+
         <activity
             android:name=".LoginActivity2"
-            android:label="@string/title_activity_login2"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".BottomActivity"
-            android:label="@string/title_activity_bottom" />
+            android:label="@string/title_activity_login2" />
+
+
+
+
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:windowSoftInputMode="adjustPan" />
+
+
         <activity
             android:name=".DashBoard"
             android:label="@string/title_activity_dash_board" />
+
+
         <activity
             android:name=".Messages"
             android:label="@string/title_activity_messages" />
+
+
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" />
-        <activity android:name=".MainActivity">
+
+
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

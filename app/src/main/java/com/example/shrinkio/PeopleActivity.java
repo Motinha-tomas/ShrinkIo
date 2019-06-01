@@ -4,24 +4,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.Objects;
 
-public class Messages extends AppCompatActivity {
+public class PeopleActivity extends AppCompatActivity {
+
     RadioGroup radioGroup;
     RadioButton Rd1, Rd2, Rd3, Rd4;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_people );
+
 
         Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
-        getSupportActionBar().setCustomView( R.layout.abs_layout_messages );
-        setTitle( "Messages" );
+        getSupportActionBar().setCustomView( R.layout.abs_layout_people );
+
+
+        ImageView profilePic = findViewById( R.id.ProfilePicture );
+        profilePic.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity( new Intent(PeopleActivity.this, ProfileActivity.class));
+            }
+        } );
 
 
         radioGroup = findViewById( R.id.radioGroup );
@@ -56,8 +67,5 @@ public class Messages extends AppCompatActivity {
             }
         } );
 
-
     }
 }
-
-

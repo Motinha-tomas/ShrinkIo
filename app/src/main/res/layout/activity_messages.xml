@@ -68,9 +68,9 @@
             android:layout_weight="1"
             android:button="@null"
             android:buttonTint="@color/uiconColor"
-            android:drawableTop="@drawable/ic_settings_icon"
+            android:drawableTop="@drawable/ic_people_icon"
             android:padding="10dp"
-            android:text="@string/settings"
+            android:text="@string/People"
             android:textAlignment="center"
             android:textColor="@color/color"
             android:textSize="12sp" />

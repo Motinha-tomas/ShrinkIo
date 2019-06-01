@@ -8,23 +8,13 @@
     android:layout_height="match_parent"
     tools:openDrawer="start"
     tools:openNavigationView="start"
-    android:gravity="end"
     android:fitsSystemWindows="true">
-    <android.support.design.widget.CollapsingToolbarLayout
-        android:id="@+id/collapsing_toolbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:contentScrim="?attr/colorPrimary"
-        app:expandedTitleGravity="top"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
+
+    <include
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        app:layout_collapseMode="pin"/>
-    </android.support.design.widget.CollapsingToolbarLayout>
+        android:layout_height="match_parent"/>
 
     <include
         layout="@layout/app_bar_nav_drawer"
