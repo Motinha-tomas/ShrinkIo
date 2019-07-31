@@ -1,37 +1,30 @@
-package com.example.shrinkio;
+package com.example.shrinkio.MainActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.shrinkio.R;
 
 import java.util.Objects;
 
-public class SettingsActivity extends AppCompatActivity {
-
-
+public class DashBoard extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton Rd1, Rd2, Rd3, Rd4;
-    Button logout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.settings_activity );
+        super.onCreate(savedInstanceState);
+        setContentView( R.layout.activity_dash_board);
 
-        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
-        getSupportActionBar().setCustomView( R.layout.abs_layout_home );
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout_notifications);
+        setTitle(" Notifications" );
 
-
-        logout = findViewById( R.id.logout );
         radioGroup = findViewById( R.id.radioGroup );
         Rd1 = findViewById( R.id.radioButton );
         Rd2 = findViewById( R.id.radioButton2 );
@@ -51,7 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                 }
                 if (Rd3.isChecked()) {
-                    Intent intent2 = new Intent( getApplicationContext(), SettingsActivity.class );
+                    Intent intent2 = new Intent( getApplicationContext(), PeopleActivity.class );
                     startActivity( intent2 );
                     overridePendingTransition(0, 0);
                 } else {
@@ -60,22 +53,14 @@ public class SettingsActivity extends AppCompatActivity {
                         startActivity( intent3 );
                         overridePendingTransition(0, 0);
                     }
-
-
                 }
             }
         } );
-
-    logout.setOnClickListener( new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-         FirebaseAuth.getInstance().signOut();
-         startActivity( new Intent (SettingsActivity.this, LoginActivity.class) );
-         Toast.makeText( SettingsActivity.this, "Logged Out", Toast.LENGTH_SHORT ).show();
-        }
-    } );
     }
-}
 
+
+
+
+}
 
 

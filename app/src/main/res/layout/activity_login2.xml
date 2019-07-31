@@ -11,36 +11,66 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity2">
+    tools:context=".Login.LoginActivity2">
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="176dp"
-        android:background="@drawable/circular_progress_bar"
-        android:progressDrawable="@drawable/circular_progress_bar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register2"
-        app:layout_constraintVertical_bias="1.0" />
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_form"
+        app:layout_constraintEnd_toEndOf="@+id/login_form"
+        app:layout_constraintStart_toStartOf="@+id/login_form"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+    <RadioButton
+        android:id="@+id/radioBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/button3"
+        android:button="@null"
+        android:buttonTint="@color/iconColor"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textColor="#FAFAFA"
+        android:textSize="15sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"/>
+
+    <RadioButton
+        android:id="@+id/radioBtn2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:button="@null"
+        android:background="@drawable/button4"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textColor="#FAFAFA"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/radioGroup3"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup3"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"/>
+    </RadioGroup>
 
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
         android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="@+id/textView">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -131,35 +161,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="199dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="serif"
-        android:gravity="center_horizontal"
-        android:text="@string/No_account"
-        app:layout_constraintBottom_toTopOf="@+id/Register2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_form" />
-
-    <Button
-        android:id="@+id/Register2"
-        android:layout_width="294dp"
-        android:layout_height="51dp"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="39dp"
-        android:background="@drawable/mybutton2"
-        android:text="@string/register"
-        android:textColor="#fafafa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>

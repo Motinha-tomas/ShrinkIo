@@ -1,4 +1,4 @@
-package com.example.shrinkio;
+package com.example.shrinkio.SecondaryActivities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

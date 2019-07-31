@@ -15,7 +15,6 @@
         android:gravity="center"
         android:text="@string/Messages"
         android:textColor="#FFFFFF"
-        android:textSize="23sp"
-        />
+        android:textSize="23sp" />
 
 </LinearLayout>

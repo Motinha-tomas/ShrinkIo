@@ -16,7 +16,7 @@
         android:gravity="center"
         android:textSize="23sp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/iconColor"
         tools:ignore="MissingConstraints" />
 
 </LinearLayout>

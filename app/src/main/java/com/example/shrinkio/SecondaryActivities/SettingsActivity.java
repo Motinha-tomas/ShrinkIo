@@ -1,0 +1,69 @@
+package com.example.shrinkio.SecondaryActivities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.example.shrinkio.Login.LoginActivity;
+import com.example.shrinkio.MainActivities.BottomActivity;
+import com.example.shrinkio.R;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
+
+public class SettingsActivity extends AppCompatActivity {
+
+
+    RadioGroup radioGroup;
+    RadioButton Rd1, Rd2, Rd3, Rd4;
+    Button logout;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.settings_activity );
+
+        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
+        getSupportActionBar().setCustomView( R.layout.abs_layout_settings );
+
+
+        logout = findViewById( R.id.logout );
+
+    logout.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+         FirebaseAuth.getInstance().signOut();
+         startActivity( new Intent (SettingsActivity.this, LoginActivity.class) );
+         Toast.makeText( SettingsActivity.this, "Logged Out", Toast.LENGTH_SHORT ).show();
+        }
+    } );
+
+    }
+
+
+     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.back_button:
+                startActivity( new Intent(SettingsActivity.this, BottomActivity.class) );
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+
+

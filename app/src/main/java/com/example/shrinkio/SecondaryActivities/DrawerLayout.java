@@ -1,7 +1,9 @@
-package com.example.shrinkio;
+package com.example.shrinkio.SecondaryActivities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.shrinkio.R;
 
 public class DrawerLayout extends AppCompatActivity {
 

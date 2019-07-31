@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".BottomActivity"
+    tools:context=".MainActivities.BottomActivity"
     tools:showIn="@layout/app_bar_nav_drawer"
     android:clickable="true"
     android:focusable="true">

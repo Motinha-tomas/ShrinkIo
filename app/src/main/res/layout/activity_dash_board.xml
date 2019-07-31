@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,27 +9,27 @@
     android:layout_alignParentBottom="true"
     android:layout_gravity="center"
     android:elevation="10dp"
-    android:foregroundGravity="center"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".DashBoard"
-    tools:targetApi="lollipop">
+    tools:context=".MainActivities.DashBoard">
 
 
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
         android:gravity="bottom"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="UselessParent">
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <RadioButton
@@ -45,7 +45,7 @@
             android:text="@string/home"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -60,7 +60,7 @@
             android:text="@string/notifications"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"/>
 
         <RadioButton
             android:id="@+id/radioButton3"
@@ -88,11 +88,13 @@
             android:text="@string/Messages"
             android:textAlignment="center"
             android:textColor="@color/color"
-            android:textSize="12sp" />
+            android:textSize="12sp"/>
+
 
     </RadioGroup>
 
 
-</android.support.constraint.ConstraintLayout>
 
 
+
+</android.support.design.widget.CoordinatorLayout>

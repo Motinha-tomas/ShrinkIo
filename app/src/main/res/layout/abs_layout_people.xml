@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:fontFamily="monospace"
+        android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
         android:text="@string/People"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/iconColor"
         android:textSize="23sp"
         />
 

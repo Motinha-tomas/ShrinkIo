@@ -186,4 +186,24 @@
     <string name="People" translatable="false">People</string>
     <string name="open_drawer" translatable="false">Abrir</string>
     <string name="close_drawer" translatable="false">Fechar</string>
+    <string name="add_tp_db">Add tp db</string>
+    <string name="back_button">Back button</string>
+    <string name="button" />
+    <string name="BUtton">Button</string>
+    <string name="Friend">+ FRIEND</string>
+    <string name="Pass">Pass</string>
+    <string name="title_activity_ads">Ads</string>
+
+    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
+    <string name="start_level">Level 1</string>
+    <string name="next_level">Next Level</string>
+    <!-- -
+        This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="send_Message">Send Message</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="or">or</string>
+    <string name="welcome_to_shrinkio">Welcome to ShrinkIo</string>
 </resources>

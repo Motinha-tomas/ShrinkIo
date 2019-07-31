@@ -1,4 +1,4 @@
-package com.example.shrinkio;
+package com.example.shrinkio.MainActivities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,11 +8,19 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.shrinkio.R;
+import com.example.shrinkio.SecondaryActivities.ProfileActivity;
+import com.example.shrinkio.SecondaryActivities.SettingsActivity;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Objects;
 
@@ -22,6 +30,12 @@ public class BottomActivity extends AppCompatActivity
 
     RadioGroup radioGroup;
     RadioButton Rd1, Rd2, Rd3, Rd4;
+
+
+    private ActionBar actionBar;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private StorageReference StorageRef;
 
 
 
@@ -34,12 +48,13 @@ public class BottomActivity extends AppCompatActivity
         setContentView( R.layout.activity_bottom );
         new GestureOverlayView( this );
 
-
+        //Action bar configurations
         Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView( R.layout.abs_layout_home );
 
 
 
+        // Radio group section
 
         radioGroup = findViewById( R.id.radioGroup );
         Rd1 = findViewById( R.id.radioButton );
@@ -74,9 +89,37 @@ public class BottomActivity extends AppCompatActivity
         } );
 
 
-        NavigationView nav_view = findViewById(R.id.nav_view);
+        NavigationView nav_view;
+
+        nav_view = findViewById(R.id.nav_view);   //select nav_view from activity_drawer_layout
+
+        nav_view.setNavigationItemSelectedListener(this);
+
+        View nav_header = nav_view.getHeaderView(0);
+
+        ImageButton Profilepic = nav_header.findViewById( R.id.ProfilePicture1);
+
+
+
+        //Navigation Drawer header menu items on click actions
+
+        LinearLayout header = nav_header.findViewById( R.id.nav_header);
+        header.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity( new Intent( BottomActivity.this, ProfileActivity.class ) );
+            }
+        } );
+
+
+
     }
 
+
+
+
+
+    // Code do make the drawer slide on swipe gesture
 
     public void onDrawerSlide() {
         DrawerLayout drawerLayout = findViewById( R.id.DrawerLayout);
@@ -107,6 +150,8 @@ public class BottomActivity extends AppCompatActivity
     }
 
 
+
+        // Navigation menu items on click action
         @Override
         public boolean onNavigationItemSelected (@NonNull MenuItem item){
         switch (item.getItemId()) {
