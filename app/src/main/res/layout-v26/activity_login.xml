@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/licolor"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -19,7 +19,6 @@
         android:id="@+id/radioGroup3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/login_form"
@@ -35,28 +34,28 @@
             android:background="@drawable/button"
             android:button="@null"
             android:buttonTint="@color/iconColor"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
             android:text="@string/register"
             android:textAlignment="center"
             android:textColor="#FAFAFA"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"/>
 
         <RadioButton
             android:id="@+id/radioBtn2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button2"
             android:button="@null"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
+            android:background="@drawable/button2"
             android:text="@string/login"
             android:textAlignment="center"
             android:textColor="#FAFAFA"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/radioGroup3"
-            app:layout_constraintTop_toBottomOf="@id/radioGroup3" />
+            app:layout_constraintTop_toBottomOf="@id/radioGroup3"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"/>
 
 
     </RadioGroup>
@@ -87,11 +86,13 @@
             android:paddingEnd="10dp"
             android:paddingBottom="10dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
 
                 <EditText
+                    android:background="@drawable/round_corner_toggle"
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,44 +103,61 @@
                     android:singleLine="true"
                     tools:targetApi="o" />
 
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
-                <EditText
-                    android:id="@+id/name"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_name"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    tools:targetApi="o" />
+                    android:background="@drawable/round_corner_toggle">
 
-            </android.support.design.widget.TextInputLayout>
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_name"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:targetApi="o"
+                        android:background="@drawable/round_corner_toggle"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
-                <EditText
-                    android:id="@+id/password"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    tools:ignore="UnusedAttribute" />
+                    android:background="@drawable/round_corner_toggle">
 
-            </android.support.design.widget.TextInputLayout>
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:imeActionId="6"
+                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeOptions="actionUnspecified"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:ignore="UnusedAttribute"
+                        android:background="@drawable/round_corner_toggle"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -178,7 +196,7 @@
         android:gravity="center_vertical"
         android:text="@string/shrinkio"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/licolor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,4 +205,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

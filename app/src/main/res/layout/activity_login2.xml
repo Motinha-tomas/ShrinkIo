@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/licolor"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -25,22 +26,22 @@
         app:layout_constraintStart_toStartOf="@+id/login_form"
         app:layout_constraintTop_toBottomOf="@id/textView">
 
-    <RadioButton
-        android:id="@+id/radioBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/button3"
-        android:button="@null"
-        android:buttonTint="@color/iconColor"
-        android:text="@string/register"
-        android:textAlignment="center"
-        android:textColor="#FAFAFA"
-        android:textSize="15sp"
-        android:paddingTop="5dp"
-        android:paddingBottom="10dp"/>
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button3"
+            android:button="@null"
+            android:buttonTint="@color/iconColor"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textColor="#FAFAFA"
+            android:textSize="15sp" />
 
-    <RadioButton
+        <RadioButton
         android:id="@+id/radioBtn2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -81,43 +82,57 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
 
                 <EditText
                     android:id="@+id/email2"
+                    android:textColor="#FAFAFA"
+                    android:background="@drawable/round_corner_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
+                    android:textColorHint="#FAFAFA"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true"
+                    android:singleLine="true" android:layout_marginStart="10dp"
                     tools:ignore="Autofill" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
                 <EditText
                     android:id="@+id/password2"
+                    android:textColorHint="#FAFAFA"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/round_corner_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:importantForAutofill="no"
+                    android:importantForAutofill="yes"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    tools:ignore="UnusedAttribute" />
+                    tools:ignore="UnusedAttribute"
+                    android:autofillHints="no" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
+        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,10 +151,18 @@
                     android:textColor="#fafafa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="Register"
-                    tools:layout_editor_absoluteX="7dp"
-                    tools:layout_editor_absoluteY="362dp" />
+                    tools:ignore="Register" />
             </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_your_password"
+                android:textColor="@color/licolor"
+                android:clickable="true"
+                android:focusable="true"/>
         </LinearLayout>
     </ScrollView>
 
@@ -155,11 +178,22 @@
         android:gravity="center_vertical"
         android:text="@string/shrinkio"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/licolor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Login"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/licolor"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@id/radioGroup3"/>
 
-</android.support.constraint.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

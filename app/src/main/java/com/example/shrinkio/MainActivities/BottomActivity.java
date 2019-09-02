@@ -4,12 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,9 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.MultiDex;
+
 import com.example.shrinkio.R;
+import com.example.shrinkio.SecondaryActivities.DrawerLayout;
 import com.example.shrinkio.SecondaryActivities.ProfileActivity;
 import com.example.shrinkio.SecondaryActivities.SettingsActivity;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Objects;
@@ -42,6 +44,7 @@ public class BottomActivity extends AppCompatActivity
     @SuppressLint({"RtlHardcoded", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
 
 
         super.onCreate( savedInstanceState );
@@ -119,41 +122,15 @@ public class BottomActivity extends AppCompatActivity
 
 
 
-    // Code do make the drawer slide on swipe gesture
-
-    public void onDrawerSlide() {
-        DrawerLayout drawerLayout = findViewById( R.id.DrawerLayout);
-        drawerLayout.addDrawerListener(
-                new DrawerLayout.DrawerListener() {
-                    @Override
-                    public void onDrawerSlide(@NonNull View view, float v) {
-
-                    }
-
-                    @Override
-                    public void onDrawerOpened(@NonNull View view) {
-
-                    }
-
-                    @Override
-                    public void onDrawerClosed(@NonNull View view) {
-
-
-                    }
-
-                    @Override
-                    public void onDrawerStateChanged(int i) {
-
-                    }
-                }
-        );
-    }
 
 
 
-        // Navigation menu items on click action
-        @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item){
+
+
+
+    // Navigation menu items on click action
+    @Override
+    public boolean onNavigationItemSelected (@NonNull MenuItem item){
         switch (item.getItemId()) {
             case R.id.nav_profile:
                 startActivity( new Intent( BottomActivity.this, ProfileActivity.class ) );
@@ -168,10 +145,7 @@ public class BottomActivity extends AppCompatActivity
         }
 
     }
-    }
-
-
-
+}
 
 
 

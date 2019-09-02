@@ -2,15 +2,16 @@ package com.example.shrinkio.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.MultiDex;
 
 import com.example.shrinkio.MainActivities.BottomActivity;
 import com.example.shrinkio.R;
@@ -18,14 +19,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity2 extends AppCompatActivity {
-    ProgressBar progressBar;
     EditText email;
     EditText password;
     Button Login;
@@ -33,6 +36,17 @@ public class LoginActivity2 extends AppCompatActivity {
     RadioButton radioBtn, radioBtn2;
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    public void onStart () {
+        super.onStart();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser != null) {
+            startActivity(new  Intent(this, BottomActivity.class));
+            overridePendingTransition(0,0);
+            finish();
+        }
+    }
 
 
     @Override
@@ -40,6 +54,7 @@ public class LoginActivity2 extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login2 );
         Objects.requireNonNull( getSupportActionBar() ).hide();
+        MultiDex.install(this);
 
 
         email = findViewById( R.id.email2);
@@ -67,6 +82,7 @@ public class LoginActivity2 extends AppCompatActivity {
 
 
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAuth = FirebaseAuth.getInstance();
         Login.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -81,17 +97,25 @@ public class LoginActivity2 extends AppCompatActivity {
                                     password.getText();
                                     startActivity(new Intent(LoginActivity2.this, BottomActivity.class));
                                     overridePendingTransition(0, 0);
+                                    finish();
                                 } else {
-                                    Toast.makeText( LoginActivity2.this, Objects.requireNonNull( task.getException() ).getMessage(), Toast.LENGTH_SHORT ).show();
+                                    Toast.makeText( LoginActivity2.this, Objects.requireNonNull( task.getException() ).getMessage(), LENGTH_SHORT ).show();
                                 }
                             }
                         } );
             }
         } );
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    final String email = firebaseUser.getEmail();
+
+
+
+
 
 
 
     }
+
 }
 

@@ -2,11 +2,13 @@ package com.example.shrinkio.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.MultiDex;
 
 import com.example.shrinkio.MainActivities.BottomActivity;
 import com.example.shrinkio.R;
@@ -20,17 +22,27 @@ public class Main2Activity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener authStateListener;
 
+    public void onStart () {
+        super.onStart();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser != null) {
+            startActivity(new  Intent(this, BottomActivity.class));
+            overridePendingTransition(0,0);
+            finish();
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main2 );
+        MultiDex.install(this);
+
         Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView( R.layout.abs_layout_home );
         getSupportActionBar().hide();
 
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseAuth = FirebaseAuth.getInstance();
 
 
 
@@ -40,6 +52,7 @@ public class Main2Activity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
                     Intent intent = new Intent(Main2Activity.this, BottomActivity.class);
+                    overridePendingTransition(0,0);
                     startActivity(intent);
                     finish();
                 }
@@ -49,11 +62,7 @@ public class Main2Activity extends AppCompatActivity {
         };
 
 
-        if (firebaseUser != null) {
-            startActivity(new Intent(Main2Activity.this, BottomActivity.class));
-            overridePendingTransition(0, 0);
-            finish();
-        }
+
 
 
         Button LoginBtn = findViewById( R.id.LoginBtn );

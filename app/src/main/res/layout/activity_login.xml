@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/licolor"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -85,11 +86,13 @@
             android:paddingEnd="10dp"
             android:paddingBottom="10dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
 
                 <EditText
+                    android:background="@drawable/round_corner_toggle"
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,11 +103,17 @@
                     android:singleLine="true"
                     tools:targetApi="o" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
 
                 <EditText
                     android:id="@+id/name"
@@ -115,13 +124,22 @@
                     android:inputType="textPersonName"
                     android:maxLines="1"
                     android:singleLine="true"
-                    tools:targetApi="o" />
+                    tools:targetApi="o"
+                    android:background="@drawable/round_corner_toggle"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_toggle">
 
                 <EditText
                     android:id="@+id/password"
@@ -135,9 +153,11 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    tools:ignore="UnusedAttribute" />
+                    tools:ignore="UnusedAttribute"
+                    android:background="@drawable/round_corner_toggle"/>
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,7 +196,7 @@
         android:gravity="center_vertical"
         android:text="@string/shrinkio"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/licolor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,4 +205,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
