@@ -100,8 +100,6 @@ public class BottomActivity extends AppCompatActivity
 
         View nav_header = nav_view.getHeaderView(0);
 
-        ImageButton Profilepic = nav_header.findViewById( R.id.ProfilePicture1);
-
 
 
         //Navigation Drawer header menu items on click actions

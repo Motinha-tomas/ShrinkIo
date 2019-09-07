@@ -15,13 +15,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 
+import com.example.shrinkio.MainActivities.BottomActivity;
 import com.example.shrinkio.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -29,17 +35,17 @@ import java.util.Objects;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    EditText email;
-    EditText password;
-    EditText editText;
+    EditText mEmail, mPassword, mName, mAge, mCountry;
     Button Register;
-    ImageView imageView;
 
     RadioGroup radioGroup2;
     RadioButton radioBtn, radioBtn2;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseDatabase db;
+    DatabaseReference reference;
+    FirebaseAuth.AuthStateListener mAuthStateListener;
     private static final int CHOOSE_IMAGE = 101;
 
 
@@ -53,15 +59,25 @@ public class LoginActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
 
-        email = findViewById( R.id.email );
-        password = findViewById( R.id.password );
+        mEmail = findViewById( R.id.email );
+        mPassword = findViewById( R.id.password );
         Register = findViewById( R.id. Register);
-
-
+        mName = findViewById(R.id.name);
+        mAge = findViewById(R.id.Age);
+        mCountry = findViewById(R.id.Country);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+                overridePendingTransition(0, 0);
+                finish();
+                return;
+            }
+        };
 
         final String es = "Email Sent";
 
@@ -70,19 +86,41 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                 firebaseAuth.createUserWithEmailAndPassword( email.getText().toString(), password.getText().toString())
+
+                 firebaseAuth.createUserWithEmailAndPassword(
+                         mEmail.getText().toString(),
+                         mPassword.getText().toString())
+
                         .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                            email.setText( "" );
-                            password.setText( "");
-                            startActivity(new Intent(LoginActivity.this, LoginActivity3.class));
-                            overridePendingTransition(0, 0);
+
+                            startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+                            overridePendingTransition(0,0);
+
+
+                            String user_id = firebaseAuth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+                            String name = mName.getText().toString();
+                            String age = mAge.getText().toString();
+                            String country = mCountry.getText().toString();
+
+                            Map newPost = new HashMap();
+                            newPost.put("Name", name);
+                            newPost.put("Age", age);
+                            newPost.put("Country", country);
+
+                            current_user_db.setValue(newPost);
+
                         }
 
-                    }
+
+
+
+                        }
                 } );
             }
         } );

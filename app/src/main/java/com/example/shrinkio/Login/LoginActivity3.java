@@ -50,6 +50,7 @@ public class LoginActivity3 extends AppCompatActivity {
         name = findViewById(R.id.name);
         country = findViewById(R.id.country);
         welcome = findViewById(R.id.welcome);
+
         welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,10 +101,10 @@ public class LoginActivity3 extends AppCompatActivity {
     public boolean validateForm() {
         boolean allDone = true;
 
-        String username = name.getText().toString().trim();
+        String displayName = name.getText().toString().trim();
         String Country = country.getText().toString().trim();
 
-        if (TextUtils.isEmpty(username)) {
+        if (TextUtils.isEmpty(displayName)) {
             name.setError("Enter your username please");
             return false;
         }

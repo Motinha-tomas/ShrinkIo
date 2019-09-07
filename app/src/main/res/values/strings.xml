@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">ShrinkIo</string>
     <string name="To_shrinkio" translatable="false">to ShrinkIo</string>
-    <string name="to_shrinkio" translatable="false">To Shrinkio</string>
     <string name="title_activity_principal" translatable="false">Principal</string>
     <string name="title_home" translatable="false">Home</string>
     <string name="title_dashboard" translatable="false">Dashboard</string>
@@ -32,7 +31,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="shrinkio" translatable="false">ShrinkIo</string>
     <string name="title_activity_bottom" translatable="false">ShrinkIo</string>
     <string name="shrinkIo" translatable="false">ShrinkIo
     </string>
@@ -170,6 +168,10 @@
     <string name="welcome">Welcome</string>
     <string name="tap_the_icon_to_choose_your_profile_image">Tap the icon to choose your profile image</string>
     <string name="Where_are_you_from">Where are you from?</string>
+    <string name="Every_information_you_provide_here_will_be_classified">Every information you provide here will be classified!</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_country">Country</string>
+    <string name="shrinkio">ShrinkIo</string>
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638

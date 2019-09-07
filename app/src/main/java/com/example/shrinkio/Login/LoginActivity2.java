@@ -2,6 +2,7 @@ package com.example.shrinkio.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -106,16 +107,23 @@ public class LoginActivity2 extends AppCompatActivity {
             }
         } );
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                    final String email = firebaseUser.getEmail();
-
-
-
-
-
-
-
     }
 
+    private boolean validateForm() {
+        boolean result = true;
+        if (TextUtils.isEmpty(email.getText().toString())) {
+            email.setError("Required");
+            result = false;
+        } else {
+            email.setError(null);
+        }
+        if (TextUtils.isEmpty(password.getText().toString())) {
+            password.setError("Required");
+            result = false;
+        } else {
+            password.setError(null);
+        }
+        return result;
+    }
 }
 
