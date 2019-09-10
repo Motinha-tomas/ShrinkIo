@@ -2,20 +2,25 @@ package com.example.shrinkio.MainActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.multidex.MultiDex;
 
+import com.example.shrinkio.Fragments.HomeFragment;
+import com.example.shrinkio.Fragments.MessagesFragment;
+import com.example.shrinkio.Fragments.NotFragment;
+import com.example.shrinkio.Fragments.PeopleFragment;
 import com.example.shrinkio.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
-public class DashBoard extends AppCompatActivity {
-    RadioGroup radioGroup;
-    RadioButton Rd1, Rd2, Rd3, Rd4;
+public class DashBoard extends AppCompatActivity  {
+
 
 
     @Override
@@ -29,41 +34,50 @@ public class DashBoard extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.abs_layout_notifications);
         setTitle(" Notifications" );
 
-        radioGroup = findViewById( R.id.radioGroup );
-        Rd1 = findViewById( R.id.radioButton );
-        Rd2 = findViewById( R.id.radioButton2 );
-        Rd3 = findViewById( R.id.radioButton3 );
-        Rd4 = findViewById( R.id.radioButton4 );
-        radioGroup.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (Rd1.isChecked()) {
-                    Intent intent = new Intent( getApplicationContext(), BottomActivity.class );
-                    startActivity( intent );
-                    overridePendingTransition(0, 0);
-                }
-                if (Rd2.isChecked()) {
-                    Intent intent1 = new Intent( getApplicationContext(), DashBoard.class );
-                    startActivity( intent1 );
-                    overridePendingTransition(0, 0);
-                }
-                if (Rd3.isChecked()) {
-                    Intent intent2 = new Intent( getApplicationContext(), PeopleActivity.class );
-                    startActivity( intent2 );
-                    overridePendingTransition(0, 0);
-                } else {
-                    if (Rd4.isChecked()) {
-                        Intent intent3 = new Intent( getApplicationContext(), Messages.class );
-                        startActivity( intent3 );
-                        overridePendingTransition(0, 0);
-                    }
-                }
-            }
-        } );
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        //I added this if statement to keep the selected fragment when rotating the device
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new HomeFragment()).commit();
+        }
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
+                    switch (item.getItemId()) {
+                        case R.id.navigation_home:
+                            selectedFragment = new HomeFragment();
+                            startActivity(new Intent(DashBoard.this, BottomActivity.class));
+                            overridePendingTransition(0,0);
+                            break;
+                        case R.id.navigation_dashboard:
+                            selectedFragment = new NotFragment();
+                            startActivity(new Intent(DashBoard.this, DashBoard.class));
+                            overridePendingTransition(0,0);
+                            break;
+                        case R.id.navigation_people:
+                            selectedFragment = new PeopleFragment();
+                            startActivity(new Intent(DashBoard.this, PeopleActivity.class));
+                            overridePendingTransition(0,0);
+                            break;
+                        case R.id.navigation_messages:
+                            selectedFragment = new MessagesFragment();
+                            startActivity(new Intent(DashBoard.this, Messages.class));
+                            overridePendingTransition(0,0);
+                    }
 
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true;
+                }
+            };
 
 }
 

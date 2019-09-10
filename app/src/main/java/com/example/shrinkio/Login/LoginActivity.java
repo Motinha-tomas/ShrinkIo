@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -124,12 +122,6 @@ public class LoginActivity extends AppCompatActivity {
                 } );
             }
         } );
-
-
-
-
-
-
 
         radioGroup2 = findViewById( R.id.radioGroup3 );
         radioBtn = findViewById( R.id.radioBtn );
