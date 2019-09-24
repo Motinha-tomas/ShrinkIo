@@ -2,7 +2,6 @@ package com.example.shrinkio.SecondaryActivities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,12 +41,27 @@ public class DrawerLayout extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference dbname = dbref.child("Name");
+        DatabaseReference dbcountry = dbref.child("Country");
+
+
+        dbname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i(TAG, dataSnapshot.getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "On canceled", databaseError.toException());
+            }
+        });
+
         mUsername = findViewById(R.id.AppName);
         user = firebaseAuth.getCurrentUser();
         userID =  user.getUid();
         reference = firebaseDatabase.getReference();
-
-
 
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -58,9 +72,9 @@ public class DrawerLayout extends AppCompatActivity {
             } else {
                 Log.d(TAG, "onAuthStateChanged:sign_out" + firebaseUser.getUid());
 
-
             }}
         };
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,11 +89,23 @@ public class DrawerLayout extends AppCompatActivity {
         });
 
 
+        DatabaseReference Usersref = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference UserUid = Usersref.child("Uid");
+        DatabaseReference UserName = UserUid.child("NAME");
 
 
+        UserName.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i(TAG, dataSnapshot.getValue(String.class));
+            }
 
-
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG,"On canceled", databaseError.toException());
+            }
+        });
+    }
 
     private void showdata(DataSnapshot dataSnapshot) {
        for (DataSnapshot ds : dataSnapshot.getChildren() ){
