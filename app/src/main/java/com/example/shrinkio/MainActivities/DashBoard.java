@@ -22,7 +22,6 @@ import java.util.Objects;
 public class DashBoard extends AppCompatActivity  {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +78,12 @@ public class DashBoard extends AppCompatActivity  {
                 }
             };
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, BottomActivity.class));
+    }
 }
+
+
 
 

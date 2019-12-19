@@ -3,10 +3,12 @@ package com.example.shrinkio.Login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText mEmail, mPassword, mName, mAge, mCountry;
     Button Register;
+    Spinner spinner;
 
     RadioGroup radioGroup2;
     RadioButton radioBtn, radioBtn2;
@@ -45,6 +48,25 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference reference;
     FirebaseAuth.AuthStateListener mAuthStateListener;
     private static final int CHOOSE_IMAGE = 101;
+
+
+    String[] SPINNERLIST = {"Select a Country...", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+            "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina",
+            "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African", "Chad",
+            "Chile", "China", "Colombia", "Comoros", "Democratic Republic of the Congo", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+            "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor (Timor-Leste)", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
+            "Gabon", "The Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+            "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
+            "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
+            "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+            "Mexico", "Micronesia, Federated States of", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru",
+            "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman",
+            "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+            "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
+            "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Sudan, South", "Suriname", "Sweden", "Switzerland", "Syria",
+            "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago",
+            "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+            "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"};
 
 
     @Override
@@ -63,6 +85,14 @@ public class LoginActivity extends AppCompatActivity {
         mName = findViewById(R.id.name);
         mAge = findViewById(R.id.Age);
         mCountry = findViewById(R.id.Country);
+        spinner = findViewById(R.id.spinner);
+
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, SPINNERLIST);
+        final Spinner betterSpinner = spinner;
+        betterSpinner.setAdapter(arrayAdapter);
+
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -95,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
 
-                            startActivity(new Intent(LoginActivity.this, BottomActivity.class));
+                            startActivity(new Intent(LoginActivity.this, Forms.class));
                             overridePendingTransition(0,0);
 
 
@@ -104,20 +134,15 @@ public class LoginActivity extends AppCompatActivity {
 
                             String name = mName.getText().toString();
                             String age = mAge.getText().toString();
-                            String country = mCountry.getText().toString();
+                            String spinner = betterSpinner.getSelectedItem().toString();
 
                             Map newPost = new HashMap();
                             newPost.put("Name", name);
                             newPost.put("Age", age);
-                            newPost.put("Country", country);
+                            newPost.put("Country", spinner);
 
                             current_user_db.setValue(newPost);
-
                         }
-
-
-
-
                         }
                 } );
             }
@@ -142,9 +167,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, LoginActivity.class));
     }
+}
 
 
 

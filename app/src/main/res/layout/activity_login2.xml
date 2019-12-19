@@ -19,11 +19,11 @@
         android:id="@+id/radioGroup3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/login_form"
-        app:layout_constraintEnd_toEndOf="@+id/login_form"
-        app:layout_constraintStart_toStartOf="@+id/login_form"
+        app:layout_constraintEnd_toEndOf="@+id/email_login_form"
+        app:layout_constraintStart_toStartOf="@+id/email_login_form"
         app:layout_constraintTop_toBottomOf="@id/textView">
 
         <RadioButton
@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button3"
+            android:background="@drawable/button2"
             android:button="@null"
             android:buttonTint="@color/iconColor"
             android:paddingTop="5dp"
@@ -42,64 +42,54 @@
             android:textSize="15sp" />
 
         <RadioButton
-        android:id="@+id/radioBtn2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:button="@null"
-        android:background="@drawable/button4"
-        android:text="@string/login"
-        android:textAlignment="center"
-        android:textColor="#FAFAFA"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@id/radioGroup3"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup3"
-        android:paddingTop="5dp"
-        android:paddingBottom="10dp"/>
+            android:id="@+id/radioBtn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button4"
+            android:button="@null"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:text="@string/login"
+            android:textAlignment="center"
+            android:textColor="#FAFAFA"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/radioGroup3"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup3" />
     </RadioGroup>
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="0dp"
+
+    <LinearLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp"
-        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
 
-        <LinearLayout
-            android:id="@+id/email_login_form"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="1dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="@drawable/round_corner_toggle"
+            android:textColorHint="#FAFAFA">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/email2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_corner_toggle">
-
-                <EditText
-                    android:id="@+id/email2"
-                    android:textColor="#FAFAFA"
-                    android:background="@drawable/round_corner_toggle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:textColorHint="#FAFAFA"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" android:layout_marginStart="10dp"
-                    tools:ignore="Autofill" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="10dp"
+                android:background="@drawable/round_corner_toggle"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#FAFAFA"
+                android:textColorHint="#FAFAFA"
+                tools:ignore="Autofill" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,14 +101,16 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_corner_toggle">
+                android:background="@drawable/round_corner_toggle"
+                android:textColorHint="#FAFAFA">
+
                 <EditText
                     android:id="@+id/password2"
-                    android:textColorHint="#FAFAFA"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/round_corner_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="no"
+                    android:background="@drawable/round_corner_toggle"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -127,44 +119,44 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    tools:ignore="UnusedAttribute"
-                    android:autofillHints="no" />
+                    android:textColorHint="#FAFAFA"
+                    tools:ignore="UnusedAttribute" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-            <LinearLayout
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+
+            <Button
+                android:id="@+id/Login2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="30dp">
-
-
-                <Button
-                    android:id="@+id/Login2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/mybutton"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    android:textColor="#fafafa"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="Register" />
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/forgot_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/forgot_your_password"
-                android:textColor="@color/licolor"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:layout_gravity="center"
+                android:background="@drawable/mybutton"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="#fafafa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="Register" />
         </LinearLayout>
-    </ScrollView>
+
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/forgot_your_password"
+            android:textColor="@color/licolor" />
+    </LinearLayout>
 
 
     <TextView
@@ -183,17 +175,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Login"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/licolor"
-        android:fontFamily="monospace"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/radioGroup3"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

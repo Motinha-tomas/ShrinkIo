@@ -31,4 +31,14 @@
     <string name="already_have_an_account">Já tem conta?</string>
     <string name="No_account">Ainda não tem conta?</string>
     <string name="Profile">Perfil</string>
+    <string name="Where_are_you_from">Qual é a sua nacionalidade?</string>
+    <string name="create_an_account">Criar conta</string>
+    <string name="forgot_your_password">Esqueci-me da minha palavra passe</string>
+    <string name="how_are_you_feeling_today">Como te estás a sentir hoje?</string>
+    <string name="next_level">Próximo nível</string>
+    <string name="or">ou</string>
+    <string name="people">Pessoas</string>
+    <string name="prompt_age">Idade</string>
+    <string name="prompt_country">País</string>
+    <string name="send_Message">Enviar mensagem</string>
 </resources>

@@ -2,7 +2,6 @@ package com.example.shrinkio.SecondaryActivities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +27,7 @@ public class DrawerLayout extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     FirebaseUser user;
-    TextView mUsername, mCountry;
+    DatabaseReference mUsername;
     private String userID;
 
     private static final String TAG = "ViewDatabase";
@@ -40,25 +39,15 @@ public class DrawerLayout extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("Users");
-        DatabaseReference dbname = dbref.child("Name");
-        DatabaseReference dbcountry = dbref.child("Country");
+        reference = firebaseDatabase.getReference("Users");
+        mUsername = reference.child(userID).child("Name");
 
 
-        dbname.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i(TAG, dataSnapshot.getValue(String.class));
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "On canceled", databaseError.toException());
-            }
-        });
 
-        mUsername = findViewById(R.id.AppName);
+
         user = firebaseAuth.getCurrentUser();
         userID =  user.getUid();
         reference = firebaseDatabase.getReference();
@@ -89,22 +78,6 @@ public class DrawerLayout extends AppCompatActivity {
         });
 
 
-        DatabaseReference Usersref = FirebaseDatabase.getInstance().getReference("Users");
-        DatabaseReference UserUid = Usersref.child("Uid");
-        DatabaseReference UserName = UserUid.child("NAME");
-
-
-        UserName.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i(TAG, dataSnapshot.getValue(String.class));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG,"On canceled", databaseError.toException());
-            }
-        });
     }
 
     private void showdata(DataSnapshot dataSnapshot) {
@@ -122,7 +95,8 @@ public class DrawerLayout extends AppCompatActivity {
            ArrayList<String> array = new ArrayList<>();
            array.add(uInfo.getUsername());
            array.add(uInfo.getCountry());
-    }}
+       }
+    }
 
 
     @Override

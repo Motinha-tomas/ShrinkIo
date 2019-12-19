@@ -3,5 +3,5 @@
     <corners android:radius="10dp"
         android:bottomLeftRadius="0dp"
         android:topLeftRadius="0dp"/>
-    <solid android:color="@color/ColorSecundary"/>
+    <solid android:color="@color/btncolor" />
 </shape>

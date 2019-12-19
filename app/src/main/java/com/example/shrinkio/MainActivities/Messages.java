@@ -83,6 +83,10 @@ public class Messages extends AppCompatActivity {
                 }
             };
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, BottomActivity.class));
+    }
 }
 
 

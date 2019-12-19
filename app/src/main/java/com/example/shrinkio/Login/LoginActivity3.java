@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 
-import com.example.shrinkio.MainActivities.BottomActivity;
 import com.example.shrinkio.R;
 import com.example.shrinkio.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +73,7 @@ public class LoginActivity3 extends AppCompatActivity {
                             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                              if(databaseError != null) {
                                  Toast.makeText(getApplicationContext(), "Data is saved", Toast.LENGTH_SHORT).show();
-                                 startActivity(new Intent(LoginActivity3.this, BottomActivity.class));
+                                 startActivity(new Intent(LoginActivity3.this, Forms.class));
                                  finish();
                                  mDataBase.child("Users").child("Name").setValue(username);
                                  mDataBase.child("Users").child("Country").setValue(Country);
@@ -124,6 +123,10 @@ public class LoginActivity3 extends AppCompatActivity {
             return allDone;
         }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, LoginActivity3.class));
     }
+}
 
 

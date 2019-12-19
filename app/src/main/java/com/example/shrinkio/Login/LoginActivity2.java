@@ -125,5 +125,10 @@ public class LoginActivity2 extends AppCompatActivity {
         }
         return result;
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, LoginActivity2.class));
+    }
 }
 
