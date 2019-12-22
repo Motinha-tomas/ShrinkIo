@@ -41,4 +41,11 @@
     <string name="prompt_age">Idade</string>
     <string name="prompt_country">País</string>
     <string name="send_Message">Enviar mensagem</string>
+    <string name="add_a_video">Adicionar um vídeo</string>
+    <string name="add_post">Adicionar um Post</string>
+    <string name="cancel">Cancelar</string>
+    <string name="create_a_post">Postar</string>
+    <string name="how_are_you_feeling">Como te sentes?</string>
+    <string name="send_post">Enviar Post</string>
+    <string name="video_image">Video/Imagem</string>
 </resources>

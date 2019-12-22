@@ -13,4 +13,6 @@
     <color name="fcolor">#3b3dab</color>
     <color name="nextcolor">#931A0C</color>
     <color name="btncolor">#e1ad21</color>
+    <color name="input_color">#FAFAFA</color>
+    <color name="transparent">#006054</color>
 </resources>

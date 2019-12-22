@@ -17,19 +17,14 @@
 
 
     <TextView
-        android:id="@+id/AppName"
-        android:text="@string/shrinkio"
+        android:id="@+id/username"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:fontFamily="@font/black_ops_one"
-        android:textColor="#FAFAFA"
         android:layout_gravity="center"
-        android:gravity="center"/>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:fontFamily="@font/black_ops_one"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#FAFAFA" />
 
     <ImageButton
         android:id="@+id/ProfilePicture1"

@@ -4,7 +4,8 @@ public class User {
     private String username = "";
     private String age = "";
     private String country = "";
-    private String userId;
+    private String ImageUrl;
+    private String Id;
 
     public User() {
 
@@ -40,5 +41,16 @@ public class User {
     }
 
 
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 }
 

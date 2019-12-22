@@ -43,7 +43,7 @@ public class PeopleActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomeFragment()).commit();
+                    new PeopleFragment()).commit();
         }
     }
 
@@ -87,4 +87,3 @@ public class PeopleActivity extends AppCompatActivity {
         startActivity(new Intent(this, BottomActivity.class));
     }
 }
-

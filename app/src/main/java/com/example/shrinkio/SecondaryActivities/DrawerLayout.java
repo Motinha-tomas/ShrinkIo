@@ -2,6 +2,7 @@ package com.example.shrinkio.SecondaryActivities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class DrawerLayout extends AppCompatActivity {
     DatabaseReference reference;
     FirebaseUser user;
     DatabaseReference mUsername;
+    TextView username;
     private String userID;
 
     private static final String TAG = "ViewDatabase";
@@ -44,7 +46,9 @@ public class DrawerLayout extends AppCompatActivity {
         reference = firebaseDatabase.getReference("Users");
         mUsername = reference.child(userID).child("Name");
 
+        username = findViewById(R.id.username);
 
+        String username = firebaseUser.getUid();
 
 
 

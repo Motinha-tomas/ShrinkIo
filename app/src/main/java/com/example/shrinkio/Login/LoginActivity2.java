@@ -54,7 +54,6 @@ public class LoginActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login2 );
-        Objects.requireNonNull( getSupportActionBar() ).hide();
         MultiDex.install(this);
 
 
@@ -131,4 +130,3 @@ public class LoginActivity2 extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity2.class));
     }
 }
-

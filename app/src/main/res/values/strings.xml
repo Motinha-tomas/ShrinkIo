@@ -174,6 +174,17 @@
     <string name="shrinkio" translatable="false">Shrinkio</string>
     <string name="people">People</string>
     <string name="how_are_you_feeling_today">How are you feeling today?</string>
+    <string name="add_post">add post</string>
+    <string name="how_are_you_feeling">How are you feeling?</string>
+    <string name="create_a_post">Create a post</string>
+    <string name="send_post">send post</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_a_video">Add a video</string>
+    <string name="video_image">Video/Image</string>
+    <string name="post_goes_here">Post Goes here</string>
+    <string name="hello_world">hello world</string>
+    <string name="search">Search</string>
+    <string name="post">POST</string>
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
