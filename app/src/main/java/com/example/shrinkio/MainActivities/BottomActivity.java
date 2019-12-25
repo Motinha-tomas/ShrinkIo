@@ -10,11 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.multidex.MultiDex;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,8 +38,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.util.Objects;
-
 import static com.example.shrinkio.R.menu.main_menu;
 
 
@@ -52,6 +51,7 @@ public class BottomActivity extends AppCompatActivity
     FirebaseDatabase mDatabase;
     DatabaseReference myRef;
     Fragment selectedFragment = null;
+    ImageButton add;
     BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -87,9 +87,6 @@ public class BottomActivity extends AppCompatActivity
         setContentView( R.layout.activity_bottom );
         new GestureOverlayView( this );
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout_home);
-
 
         //Action bar configurations
 
@@ -99,6 +96,11 @@ public class BottomActivity extends AppCompatActivity
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation1);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+
+
 
 
         rv = findViewById(R.id.recyclerView);
@@ -113,12 +115,15 @@ public class BottomActivity extends AppCompatActivity
         myRef = mDatabase.getReference().child("Users").child(user_id).child("post");
 
 
+    }
 
-
-
-
-
-
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+        View mDrawerListView = inflater.inflate(
+                R.layout.activity_drawer_layout, container, false);
+        mDrawerListView.setFitsSystemWindows(true);
+        return mDrawerListView;
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 
@@ -14,8 +13,6 @@ import com.example.shrinkio.MainActivities.BottomActivity;
 import com.example.shrinkio.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Objects;
 
 public class Main2Activity extends AppCompatActivity {
     FirebaseUser firebaseUser;
@@ -39,9 +36,6 @@ public class Main2Activity extends AppCompatActivity {
         setContentView( R.layout.activity_main2 );
         MultiDex.install(this);
 
-        Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView( R.layout.abs_layout_home );
-        getSupportActionBar().hide();
 
 
 

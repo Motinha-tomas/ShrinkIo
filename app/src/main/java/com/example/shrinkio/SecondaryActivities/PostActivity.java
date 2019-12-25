@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shrinkio.MainActivities.BottomActivity;
@@ -23,7 +23,6 @@ import com.example.shrinkio.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,8 +42,6 @@ public class PostActivity extends AppCompatActivity {
     Uri imageUri;
     String myUrl = "";
     ImageView close;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
     StorageReference storageReference;
     TextView post;
@@ -55,17 +52,22 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout_post);
+
 
         Post = findViewById(R.id.Post);
-
         close = findViewById(R.id.close);
         post = findViewById(R.id.post);
-        storageReference = FirebaseStorage.getInstance().getReference("post");
+        storageReference = FirebaseStorage.getInstance().getReference("Posts");
 
 
-        close.setOnClickListener(view -> startActivity(new Intent(PostActivity.this, BottomActivity.class)));
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PostActivity.this, BottomActivity.class));
+                overridePendingTransition(0, 0);
+                finish();
+            }
+        });
 
         post.setOnClickListener(view -> uploadImage());
 
@@ -94,7 +96,7 @@ public class PostActivity extends AppCompatActivity {
         {
             if (item.getItemId() == R.menu.post_menu) {
 
-                FirebaseDatabase.getInstance().getReference().child("Users").child("post").push();
+                FirebaseDatabase.getInstance().getReference().child("Users").child("Posts").push();
 
                 String post = Post.getText().toString();
 
@@ -107,7 +109,7 @@ public class PostActivity extends AppCompatActivity {
                 video.setImageURI(imageUri);
 
                 DatabaseReference nPost = databaseReference.push();
-                nPost.child("post").setValue(post);
+                nPost.child("Posts").setValue(post);
                 nPost.child("img").setValue(imageUri);
 
             }
@@ -130,6 +132,7 @@ public class PostActivity extends AppCompatActivity {
     private void uploadImage() {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Posting...");
+        progressDialog.show();
 
         if (imageUri != null) {
             StorageReference filereference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
@@ -147,7 +150,7 @@ public class PostActivity extends AppCompatActivity {
                             Uri downloadUri = task.getResult();
                             myUrl = downloadUri.toString();
 
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
                             String postId = reference.push().getKey();
 
                             HashMap<String, Object> hashMap = new HashMap<>();
@@ -180,7 +183,7 @@ public class PostActivity extends AppCompatActivity {
             assert result != null;
             imageUri = result.getUri();
             video.setImageURI(imageUri);
-            video.setImageURI(imageUri);
+
         } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, BottomActivity.class));
