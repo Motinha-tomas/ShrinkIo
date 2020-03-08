@@ -6,10 +6,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shrinkio.Adapter.UserAdapter;
 import com.example.shrinkio.R;
 import com.example.shrinkio.model.User;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,17 +32,17 @@ import java.util.List;
 
 public class PeopleFragment extends Fragment {
 
-    EditText search_bar;
-    private RecyclerView recyclerView;
+    FirebaseUser firebaseUser;
     private UserAdapter userAdapter;
     private List<User> mUsers;
+    private TextInputEditText search_bar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
 
-        recyclerView = view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -48,11 +51,13 @@ public class PeopleFragment extends Fragment {
         userAdapter = new UserAdapter(getContext(), mUsers);
         recyclerView.setAdapter(userAdapter);
 
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar3);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
         readUsers();
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -67,19 +72,24 @@ public class PeopleFragment extends Fragment {
         });
 
         return view;
+
+
     }
 
     private void searchUsers(String s) {
-        Query query = FirebaseDatabase.getInstance().getReference("Users").child("user_Id").orderByChild("Name").startAt(s).endAt(s + "\uf8ff");
+        String user_id = firebaseUser.getUid();
+        Query query = FirebaseDatabase.getInstance().getReference("Users").child(user_id).orderByChild("Name");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
                     mUsers.add(user);
                 }
+
                 userAdapter.notifyDataSetChanged();
             }
 
@@ -92,13 +102,14 @@ public class PeopleFragment extends Fragment {
 
     public void readUsers() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference1 = reference.child("Users");
+        reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (search_bar.getText().toString().equals("")) {
                     mUsers.clear();
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        User user = dataSnapshot.getValue(User.class);
+                        User user = dataSnapshot1.getValue(User.class);
                         mUsers.add(user);
                     }
 
@@ -111,4 +122,5 @@ public class PeopleFragment extends Fragment {
             }
         });
     }
+
 }

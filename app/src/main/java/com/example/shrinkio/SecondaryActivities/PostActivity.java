@@ -47,7 +47,6 @@ public class PostActivity extends AppCompatActivity {
     TextView post;
 
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
@@ -84,14 +83,12 @@ public class PostActivity extends AppCompatActivity {
     }
 
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.post_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         {
             if (item.getItemId() == R.menu.post_menu) {
@@ -174,7 +171,6 @@ public class PostActivity extends AppCompatActivity {
     }
 
 
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {

@@ -83,17 +83,8 @@ public class LoginActivity3 extends AppCompatActivity {
                         });
                     }
                 }
-
-
-
-
             }
         });
-
-
-
-
-
     }
 
 

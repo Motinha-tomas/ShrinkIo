@@ -50,11 +50,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         final User user = mUsers.get(i);
 
         holder.btn_follow.setVisibility(View.VISIBLE);
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getCountry());
+
         Glide.with(mContext).load(user.getImageUrl()).into(holder.image_profile);
         isFollowing(user.getId(), holder.btn_follow);
 
@@ -63,34 +65,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-                editor.putString("profileid", user.getId());
-                editor.apply();
-                ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new PeopleFragment()).commit();
-            }
+        holder.itemView.setOnClickListener(view -> {
+            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+            editor.putString("profileid", user.getId());
+            editor.apply();
+            ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new PeopleFragment()).commit();
         });
 
-        holder.btn_follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.btn_follow.getText().toString().equals("Follow")) {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("Following").child(user.getId()).setValue(true);
+        holder.btn_follow.setOnClickListener(view -> {
+            if (holder.btn_follow.getText().toString().equals("Follow")) {
+                FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
+                        .child("Following").child(user.getId()).setValue(true);
 
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                            .child("Followers").child(firebaseUser.getUid()).setValue(true);
-                } else {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("Following").child(user.getId()).removeValue();
+                FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
+                        .child("Followers").child(firebaseUser.getUid()).setValue(true);
+            } else {
+                FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
+                        .child("Following").child(user.getId()).removeValue();
 
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                            .child("Followers").child(firebaseUser.getUid()).removeValue();
+                FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
+                        .child("Followers").child(firebaseUser.getUid()).removeValue();
 
-                }
             }
         });
 
