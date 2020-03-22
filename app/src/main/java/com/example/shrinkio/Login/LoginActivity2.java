@@ -62,23 +62,14 @@ public class LoginActivity2 extends AppCompatActivity {
         Login = findViewById( R.id.Login2 );
 
 
-        radioGroup2 = findViewById( R.id.radioGroup3 );
-        radioBtn = findViewById( R.id.radioBtn );
-        radioBtn2 = findViewById( R.id.radioBtn2 );
-        radioGroup2.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener() {
+        Button newUser = findViewById(R.id.new_user);
+        newUser.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioBtn.isChecked()) {
-                    startActivity( new Intent( LoginActivity2.this, LoginActivity.class ) );
-                    overridePendingTransition( 0, 0 );
-                } else {
-                    if (radioBtn2.isChecked()) {
-                        startActivity( new Intent( LoginActivity2.this, LoginActivity2.class ) );
-                        overridePendingTransition( 0, 0 );
-                    }
-                }
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity2.this, BottomActivity.class));
+
             }
-        } );
+        });
 
 
 

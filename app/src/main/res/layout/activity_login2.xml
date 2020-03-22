@@ -15,48 +15,6 @@
     tools:context=".Login.LoginActivity2">
 
     <!-- Login progress -->
-    <RadioGroup
-        android:id="@+id/radioGroup3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/email_login_form"
-        app:layout_constraintStart_toStartOf="@+id/email_login_form"
-        app:layout_constraintTop_toBottomOf="@id/textView">
-
-        <RadioButton
-            android:id="@+id/radioBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/button2"
-            android:button="@null"
-            android:buttonTint="@color/iconColor"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
-            android:text="@string/register"
-            android:textAlignment="center"
-            android:textColor="#FAFAFA"
-            android:textSize="15sp" />
-
-        <RadioButton
-            android:id="@+id/radioBtn2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/button4"
-            android:button="@null"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
-            android:text="@string/login"
-            android:textAlignment="center"
-            android:textColor="#FAFAFA"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@id/radioGroup3"
-            app:layout_constraintTop_toBottomOf="@id/radioGroup3" />
-    </RadioGroup>
 
 
     <LinearLayout
@@ -130,7 +88,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="end"
+                android:text="@string/forgot_your_password"
+                android:textColor="@color/licolor"
+                android:textSize="13sp" />
 
 
             <Button
@@ -148,14 +120,13 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/forgot_password"
+        <Button
+            android:id="@+id/new_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/forgot_your_password"
-            android:textColor="@color/licolor" />
+            android:background="@color/colorPrimary"
+            android:text="@string/new_user_sign_in"
+            android:textColor="#FAFAFA" />
     </LinearLayout>
 
 
@@ -166,12 +137,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/black_ops_one"
         android:gravity="center_vertical"
-        android:text="@string/shrinkio"
-        android:textAlignment="center"
+        android:text="@string/loney_caps"
         android:textColor="@color/licolor"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/email_login_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

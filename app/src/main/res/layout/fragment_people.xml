@@ -6,39 +6,11 @@
     android:background="@color/colorPrimary"
     tools:context=".Fragments.PeopleFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
-
-        <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-            android:src="@drawable/ic_search" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:hint="@string/search"
-            android:textColor="#FAFAFA"
-            android:textColorHint="#FAFAFA" />
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_View"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bar" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
