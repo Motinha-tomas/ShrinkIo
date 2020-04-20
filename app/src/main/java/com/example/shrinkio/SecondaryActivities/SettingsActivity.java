@@ -33,7 +33,6 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView( R.layout.settings_activity );
 
         Objects.requireNonNull( getSupportActionBar() ).setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
-        getSupportActionBar().setCustomView( R.layout.abs_layout_settings );
 
 
         logout = findViewById( R.id.logout );

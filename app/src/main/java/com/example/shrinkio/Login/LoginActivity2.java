@@ -66,7 +66,7 @@ public class LoginActivity2 extends AppCompatActivity {
         newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity2.this, BottomActivity.class));
+                startActivity(new Intent(LoginActivity2.this, LoginActivity.class));
 
             }
         });
@@ -119,5 +119,6 @@ public class LoginActivity2 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, LoginActivity2.class));
+        overridePendingTransition(0, 0);
     }
 }

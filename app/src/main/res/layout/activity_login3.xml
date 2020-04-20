@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,90 +16,83 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-black"
-        android:gravity="center_vertical"
+        android:layout_gravity="center|top"
         android:text="@string/shrinkio"
-        android:textAlignment="center"
         android:textColor="@color/licolor"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/Every_information_you_provide_here_will_be_classified"
-        android:textColor="@color/licolor"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        android:padding="50dp"
+        android:textSize="30sp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/email_login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        android:padding="10dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
+        <TextView
+            android:id="@+id/asup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/personal_information"
+            android:textColor="#FAFAFA"
+            android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/name"
+        <Spinner
+            android:id="@+id/spinner_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_corner_toggle"
             android:gravity="center"
-            android:hint="@string/what_would_you_like_to_be_called"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:autofillHints="@string/country"
+            android:hint="@string/country"
+            android:padding="15dp" />
 
 
-        <EditText
-            android:id="@+id/country"
+        <Spinner
+            android:id="@+id/spinner_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_corner_toggle"
             android:gravity="center"
-            android:hint="@string/Where_are_you_from"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/city"
+            android:hint="@string/city"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/data_nascimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/name"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.601"
-            android:layout_marginTop="20dp"/>
+            android:text="@string/data_de_nascimento2"
+            android:textColor="#FAFAFA" />
 
         <Button
             android:id="@+id/welcome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/mybutton"
-            android:text="@string/welcome"
+            android:layout_marginStart="10dp"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/continuar" />
 
 
     </LinearLayout>
 
 
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

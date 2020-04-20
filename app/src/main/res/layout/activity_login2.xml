@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+
     tools:context=".Login.LoginActivity2">
 
     <!-- Login progress -->
@@ -27,6 +27,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:id="@+id/asup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/welcome2"
+            android:textColor="#FAFAFA"
+            android:textSize="22sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -46,6 +57,7 @@
                 android:singleLine="true"
                 android:textColor="#FAFAFA"
                 android:textColorHint="#FAFAFA"
+                android:paddingBottom="10dp"
                 tools:ignore="Autofill" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,32 +90,19 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColorHint="#FAFAFA"
+                    android:paddingBottom="10dp"
                     tools:ignore="UnusedAttribute" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="end"
-                android:layout_marginBottom="10dp"
-                android:background="@color/colorPrimary"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="end"
-                android:text="@string/forgot_your_password"
-                android:textColor="@color/licolor"
-                android:textSize="13sp" />
-
 
             <Button
                 android:id="@+id/Login2"
@@ -121,13 +120,25 @@
 
 
         <Button
-            android:id="@+id/new_user"
+            android:id="@+id/forgot_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="@string/new_user_sign_in"
-            android:textColor="#FAFAFA" />
+            android:text="@string/forgot_your_password"
+            android:textAlignment="textStart"
+            android:textColor="@color/licolor" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/new_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/new_user"
+        android:textColor="#FAFAFA"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
     <TextView
@@ -139,10 +150,9 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/black_ops_one"
         android:gravity="center_vertical"
-        android:text="@string/loney_caps"
+        android:text="@string/shrinkio"
         android:textColor="@color/licolor"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/email_login_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

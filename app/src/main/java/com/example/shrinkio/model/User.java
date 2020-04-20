@@ -1,19 +1,17 @@
 package com.example.shrinkio.model;
 
 public class User {
-    private String Username;
-    private String Age;
-    private String Country;
-    private String ImageUrl;
-    private String Id;
+
+    public String country;
+
+    public String city;
 
 
-    public User(String username, String age, String country, String ImageUrl, String Id) {
-        this.Username = username;
-        this.Age = age;
-        this.Country = country;
-        this.ImageUrl = ImageUrl;
-        this.Id = Id;
+    public User(String country, String city) {
+
+        this.country = country;
+        this.city = city;
+
     }
 
     public User() {
@@ -22,50 +20,21 @@ public class User {
 
 
 
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username){
-        this.Username = username;
-    }
-
-
-
-    public String getAge() {
-
-        return Age;
-    }
-
-    public void setAge(String age) {
-
-        this.Age = age;
-    }
-
-
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        this.Country = country;
+        this.country = country;
     }
 
-
-    public void setImageUrl() {
-        this.ImageUrl = ImageUrl;
+    public String getCity() {
+        return city;
     }
 
-    public String getImageUrl() {
-        return ImageUrl;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        this.Id = id;
-    }
 }
 

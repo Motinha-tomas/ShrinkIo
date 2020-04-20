@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/input_color"
             android:padding="10dp"
-            android:text="@string/post_goes_here"
             android:textColor="#FAFAFA"
             android:textStyle="bold" />
 
